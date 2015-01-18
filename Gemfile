@@ -21,4 +21,5 @@ group :development do
   gem 'hub', :require=>nil
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'rspec-rails'
 end
