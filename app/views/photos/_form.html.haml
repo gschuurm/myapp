@@ -4,11 +4,10 @@
   .form-inputs
     = f.input :title
     = f.input :timestamp
-    = f.input :extension
+    -#= f.input :extension
     = f.input :description
   .form-fields
-    = f.file_field :photo
+    = f.file_field :extension
   .form-actions
     = f.button :submit
-
   

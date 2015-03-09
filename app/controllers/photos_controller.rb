@@ -25,6 +25,7 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     @photo = Photo.new(photo_params)
+# on create, check if photo exists, and if does, throw warning...
 
     respond_to do |format|
       if @photo.save
@@ -54,6 +55,8 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+    logger.debug("deleting #{@photo.photo_filename}")
+    @photo.delete_photo 
     @photo.destroy
     respond_to do |format|
       format.html { redirect_to photos_url }
