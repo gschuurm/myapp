@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
 
   def pi?
     #check ip address for pi's ip and return true if so
-    
+    true
   end
 end
