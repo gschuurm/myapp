@@ -21,6 +21,53 @@ class PhotosController < ApplicationController
   def edit
   end
 
+  # GET /photos/1/albums
+  def albums
+    @photo = Photo.find(params[:id])
+    @albums = @photo.albums
+  end
+
+  # POST /photos/1/album_add?album_id=2 --note: no real query string, just convenient notation for params
+  def album_add
+    
+    #convert ids from routing to objects
+    @photo = Photo.find(params[:id])
+    @album = Photo.find(params[:album])
+
+    if not @photo.in_album?(@album)
+      #add photo to album list
+      @photo.albums << @album
+      flash[:notice] = 'Photo was successfully added to the album'
+    else
+      flash[:notice] = 'Photo was already in the album' 
+    end
+    redirect_to :action => :albums, :id => @photo
+  end
+
+  # POST /photos/1/album_remove?albums[]=
+  def album_remove
+
+    #converts ids from routing to object
+    @photo = Photo.find(params[:id])
+
+    #get list of albums to remove from query string
+    album_ids = params[:albums]
+
+    unless album_ids.blank?
+      album_ids.each do |album_id|
+        album = Album.find(album_id)
+        if @photo.in_album?(album)
+          logger.info "Removing photo from album #{album.id}"
+#ADD THIS BACK IN FOR DELETE! - causing error
+          #@photo.albums.delete(album)
+          #flash[:notice] = 'Album was successfully deleted'
+        end
+      end
+    end
+    redirect_to :action => :albums, :id => @photo
+  end
+
+
   # POST /photos
   # POST /photos.json
   def create

@@ -15,6 +15,15 @@
 %p
   %b Photo:
   = image_tag @photo.photo_path
+%p
+-#  %b Albums:
+  = if !@photo.albums.empty?
+  = @photo.albums.collect {|c| link_to(c.name, c)}.join(", ").html_safe
+  = else
+  Not in any albums.
+  = end
 = link_to 'Edit', edit_photo_path(@photo)
 \|
 = link_to 'Back', photos_path
+\|
+= link_to 'Albums', albums_photo_path(@photo)

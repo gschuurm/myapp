@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
 
   #validates_presence_of :title #add other mandatory attrs here...
   after_save :store_photo
-  #after_save :make_file
+  has_and_belongs_to_many :albums
 
   def extension=(file_data)
     unless file_data.blank?
@@ -22,9 +22,9 @@ class Photo < ActiveRecord::Base
     File.join(PHOTO_STORE, "/#{title}")
   end
  
-  def make_file
-    File.open("/Users/graceschuurmans/firstSite/myapp/public/test.txt", "w") { |f| f.write("I did it!") }
-  end
+  #def make_file
+   # File.open("/Users/graceschuurmans/firstSite/myapp/public/test.txt", "w") { |f| f.write("I did it!") }
+  #end
 
 # return a path to photo to use in the view
   def photo_path
@@ -35,8 +35,12 @@ class Photo < ActiveRecord::Base
     if File.exist?(photo_filename)
       File.delete(photo_filename) 
     else
-      raise "photo not present- cannot delete"
+      logger.info "photo not present- cannot delete"
     end
+  end
+
+  def in_album?(album)
+    self.albums.include?(album)
   end
 
   private
