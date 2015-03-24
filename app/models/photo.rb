@@ -2,9 +2,9 @@ class Photo < ActiveRecord::Base
 
   #validates_presence_of :title #add other mandatory attrs here...
   after_save :store_photo
-  has_and_belongs_to_many :albums
+  belongs_to :albums
 
-  def extension=(file_data)
+  def photo_file=(file_data)
     unless file_data.blank?
       #store uploaded data in a private instance var
       @file_data = file_data

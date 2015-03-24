@@ -47,6 +47,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -124,6 +126,8 @@ GEM
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
     sexp_processor (4.4.1)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -162,6 +166,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
+  factory_girl
   figaro
   foundation-rails (= 5.0.3.1)
   haml-rails
@@ -175,6 +180,7 @@ DEPENDENCIES
   rails_layout
   rspec-rails
   sass-rails (~> 4.0.0)
+  shoulda-matchers
   simple_form
   sqlite3
   thin

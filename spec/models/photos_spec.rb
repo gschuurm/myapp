@@ -11,8 +11,8 @@ describe Photo do
 
     it "saves new photo to PHOTO_STORE" do
       file_path = File.expand_path('../../../public/photo_store', __FILE__)
-      #foto = FactoryGirl.new
-      make_file
+      #photo = Factory(:photo)
+      photo = Photo.create!(:name => 'hello2.jpg')
       assert(File.exists?("#{file_path}/test.txt"))
     end
 
