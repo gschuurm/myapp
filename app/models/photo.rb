@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
 
   #validates_presence_of :title #add other mandatory attrs here...
   after_save :store_photo
-  belongs_to :albums
+  belongs_to :album
 
   def photo_file=(file_data)
     unless file_data.blank?

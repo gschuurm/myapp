@@ -8,8 +8,8 @@
   = @photo.timestamp
 %p
   %b In Album:
-  -#= link_to @photo.album.name #@photo.photo_file
-  = @photo.album_id
+  = link_to @photo.album.name #@photo.photo_file
+  -#= @photo.album_id
 %p
   %b Description:
   = @photo.description

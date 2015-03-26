@@ -19,5 +19,7 @@ describe Photo do
 #      assert(File.exists?("#{file_path}/test.txt"))
     end
 
+    it { should belong_to(:album) }
+
   end
 end
