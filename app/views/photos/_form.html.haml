@@ -3,9 +3,10 @@
 
   .form-inputs
     = f.input :title
-    = f.input :timestamp
-    -#= f.input :extension
+    -#= f.input :timestamp
     = f.input :description
+    = f.input :album_id
+    = f.select :album_id, Album.find(:all).collect {|a| [a.name, a.id]}
   .form-fields
     = f.file_field :photo_file
   .form-actions

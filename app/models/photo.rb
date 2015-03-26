@@ -19,7 +19,8 @@ class Photo < ActiveRecord::Base
 
 # write image file here
   def photo_filename
-    File.join(PHOTO_STORE, "/#{title}")
+    File.join(PHOTO_STORE, "/#{self.title}_#{self.created_at}.jpg")
+    #File.join(PHOTO_STORE, "/#{self.title}")
   end
  
   #def make_file
@@ -28,7 +29,7 @@ class Photo < ActiveRecord::Base
 
 # return a path to photo to use in the view
   def photo_path
-    "/photo_store/#{title}"
+    "/photo_store/#{title}_#{self.created_at}.jpg"
   end
 
   def delete_photo
@@ -39,9 +40,9 @@ class Photo < ActiveRecord::Base
     end
   end
 
-  def in_album?(album)
+'''  def in_album?(album)
     self.albums.include?(album)
-  end
+  end'''
 
   private
 
@@ -50,6 +51,10 @@ class Photo < ActiveRecord::Base
       logger.debug("got inside store_photo this time")
       #make photo store directory if doesn't already exist
       FileUtils.mkdir_p PHOTO_STORE
+
+      self.timestamp = self.created_at
+      logger.debug("self timestamp is... #{self.timestamp}")
+
       #write photo data to file
       logger.debug("photo filename: #{photo_filename}")
       File.open(photo_filename, 'wb') do |f|

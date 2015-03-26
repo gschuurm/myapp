@@ -7,21 +7,15 @@
   %b Timestamp:
   = @photo.timestamp
 %p
-  %b Photo File:
-  = @photo.photo_file
+  %b In Album:
+  -#= link_to @photo.album.name #@photo.photo_file
+  = @photo.album_id
 %p
   %b Description:
   = @photo.description
 %p
   %b Photo:
   = image_tag @photo.photo_path
-%p
--#  %b Albums:
-  = if !@photo.albums.empty?
-  = @photo.albums.collect {|c| link_to(c.name, c)}.join(", ").html_safe
-  = else
-  Not in any albums.
-  = end
 = link_to 'Edit', edit_photo_path(@photo)
 \|
 = link_to 'Back', photos_path
