@@ -36,13 +36,19 @@
   @extend .button;
   @extend .radius;
   }
+.thumbnail {
+
+}
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
   @include twelve-columns;
-  background-color: #eee;
+  #background-color: #eee;
+  background-image: url("nasty_fabric.png");
+  height: 100%;
   }
 section {
   @extend .row;
   margin-top: 20px;
+  height: 100%;
   }

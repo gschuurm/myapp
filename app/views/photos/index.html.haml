@@ -6,7 +6,7 @@
     %th Timestamp
     %th Photo File 
     %th Description
-    %th
+    %th Album ID
     %th
     %th
 
@@ -16,6 +16,7 @@
       %td= photo.timestamp
       %td= photo.photo_file
       %td= photo.description
+      %td= photo.album_id
       %td= link_to 'Show', photo
       %td= link_to 'Edit', edit_photo_path(photo)
       %td= link_to 'Destroy', photo, :method => :delete, :data => { :confirm => 'Are you sure?' }

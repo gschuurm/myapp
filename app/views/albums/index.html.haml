@@ -1,4 +1,4 @@
-%h1 Listing albums
+%h1 Albums
 
 %table
   %tr
@@ -12,6 +12,10 @@
     %tr
       %td= album.name
       %td= album.description
+      %td
+        - album.photos.each do |photo|
+          %a.th
+            = image_tag(photo.photo_path, size: "45x30") 
       %td= link_to 'Show', album
       %td= link_to 'Edit', edit_album_path(album)
       %td= link_to 'Destroy', album, :method => :delete, :data => { :confirm => 'Are you sure?' }
