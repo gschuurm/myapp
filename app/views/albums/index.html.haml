@@ -15,7 +15,10 @@
       %td
         - album.photos.each do |photo|
           %a.th
-            = image_tag(photo.photo_path, size: "45x30") 
+            .lightbox_content
+              = image_tag(photo.photo_path, size: "45x30")
+            = link_to #image_tag(photo.photo_path, size: "45x30"), 
+            :"data-lightbox" => ".lightbox_content"
       %td= link_to 'Show', album
       %td= link_to 'Edit', edit_album_path(album)
       %td= link_to 'Destroy', album, :method => :delete, :data => { :confirm => 'Are you sure?' }
@@ -23,3 +26,5 @@
 %br
 
 = link_to 'New Album', new_album_path
+
+

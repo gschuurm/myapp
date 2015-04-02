@@ -9,7 +9,11 @@
 %p
   %b Photos:
   - @album.photos.each do |photo|
-    = image_tag(photo.photo_path, size: "45x30") 
+    .lightbox_content
+      = image_tag(photo.photo_path, size: "45x30")
+    = link_to #image_tag(photo.photo_path, size: "45x30"), 
+    :"data-lightbox" => ".lightbox_content"
+    -#= image_tag(photo.photo_path, size: "45x30") 
 = link_to 'Edit', edit_album_path(@album)
 \|
 = link_to 'Back', albums_path
