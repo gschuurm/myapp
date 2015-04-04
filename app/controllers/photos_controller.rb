@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
   before_filter :get_album
-
+  logger.debug("encoding file as utf-8")
+  
   # GET /photos
   # GET /photos.json
   def index
@@ -30,7 +31,9 @@ class PhotosController < ApplicationController
     #@photo = Photo.new(photo_params)
     #@photo = @album.photos.build(params[:photo])
     @photo = Photo.new(album_id: @album.id)
-
+    @photo.photo_file.encode!('utf-8', 'utf-8-mac').chars.map(&:to_s)
+    #^ this produces NilClass method call error- photo_file is not created yet
+    logger.debug("creating photo is: #{@photo.photo_path}}")
     respond_to do |format|
       if @photo.save
         format.html { redirect_to album_photos_url(@album), notice: 'Photo was successfully created.' }

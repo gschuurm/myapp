@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :title
-    = f.hidden_field :timestamp
+    = f.input :timestamp
     = f.input :description
     = f.select :album_id, Album.find(:all).collect {|a| [a.name, a.id]}
   .form-fields

@@ -19,7 +19,7 @@ class Photo < ActiveRecord::Base
 
 # write image file here
   def photo_filename
-    File.join(PHOTO_STORE, "/#{self.title}_#{self.created_at}.jpg")
+    File.join(PHOTO_STORE, "/#{self.title}_#{self.timestamp}.jpg")
     #File.join(PHOTO_STORE, "/#{self.title}")
   end
  
@@ -29,7 +29,7 @@ class Photo < ActiveRecord::Base
 
 # return a path to photo to use in the view
   def photo_path
-    "/photo_store/#{title}_#{self.created_at}.jpg"
+    "/photo_store/#{self.title}_#{self.timestamp}.jpg"
   end
 
   def delete_photo
