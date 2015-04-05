@@ -9,8 +9,6 @@ class Photo < ActiveRecord::Base
       #store uploaded data in a private instance var
       @file_data = file_data
       #set title to be unique file name
-      logger.debug("setting the title...")
-      self.title = file_data.original_filename.split('.').first.downcase
       logger.debug("self.title is... #{self.title}")
     end
   end
@@ -19,7 +17,7 @@ class Photo < ActiveRecord::Base
 
 # write image file here
   def photo_filename
-    File.join(PHOTO_STORE, "/#{self.title}_#{self.timestamp}.jpg")
+    File.join(PHOTO_STORE, "/#{self.title}_#{self.created_at}.jpg")
     #File.join(PHOTO_STORE, "/#{self.title}")
   end
  
@@ -29,7 +27,7 @@ class Photo < ActiveRecord::Base
 
 # return a path to photo to use in the view
   def photo_path
-    "/photo_store/#{self.title}_#{self.timestamp}.jpg"
+    "/photo_store/#{self.title}_#{self.created_at}.jpg"
   end
 
   def delete_photo
@@ -39,10 +37,6 @@ class Photo < ActiveRecord::Base
       logger.info "photo not present- cannot delete"
     end
   end
-
-'''  def in_album?(album)
-    self.albums.include?(album)
-  end'''
 
   private
 
