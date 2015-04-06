@@ -1,0 +1,23 @@
+%h1 Listing pi_settings
+
+%table
+  %tr
+    %th Display
+    %th Capture
+    %th Album
+    %th
+    %th
+    %th
+
+  - @pi_settings.each do |pi_setting|
+    %tr
+      %td= pi_setting.display
+      %td= pi_setting.capture
+      %td= pi_setting.album
+      %td= link_to 'Show', pi_setting
+      %td= link_to 'Edit', edit_pi_setting_path(pi_setting)
+      %td= link_to 'Destroy', pi_setting, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pi setting', new_pi_setting_path

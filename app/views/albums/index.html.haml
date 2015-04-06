@@ -6,7 +6,7 @@
     %th Description
     %th
     %th
-    %th
+    %th 
 
   - @albums.each do |album|
     %tr
@@ -14,12 +14,9 @@
       %td= album.description
       %td
         - album.photos.each do |photo|
-          %a.th
-            .lightbox_content
-              = photo.photo_path
-            = link_to image_tag(photo.photo_path, size: "45x30"), photo.photo_file 
-            -#this doesn't work^ and this: :"data-lightbox" => ".lightbox_content"
+          = link_to image_tag(photo.photo_path, size: "45x30"), photo.photo_path
       %td= link_to 'Show', album
+      %td= link_to 'Photos', album_photos_path(album)
       %td= link_to 'New Photo', new_album_photo_path(album)
       %td= link_to 'Edit', edit_album_path(album)
       %td= link_to 'Destroy', album, :method => :delete, :data => { :confirm => 'Are you sure?' }

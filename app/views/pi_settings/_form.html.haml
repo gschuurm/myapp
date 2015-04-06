@@ -1,0 +1,10 @@
+= simple_form_for(@pi_setting) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :display
+    = f.input :capture
+    = f.input :album
+
+  .form-actions
+    = f.button :submit

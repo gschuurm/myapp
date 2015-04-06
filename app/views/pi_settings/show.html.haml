@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Display:
+  = @pi_setting.display
+%p
+  %b Capture:
+  = @pi_setting.capture
+%p
+  %b Album:
+  = @pi_setting.album
+
+= link_to 'Edit', edit_pi_setting_path(@pi_setting)
+\|
+= link_to 'Back', pi_settings_path
