@@ -2,18 +2,20 @@
 
 %table
   %tr
-    %th Display
-    %th Capture
-    %th Album
+    %th Display Mode
+    %th Capture Mode
+    %th To Display on Pi 
     %th
     %th
     %th
 
   - @pi_settings.each do |pi_setting|
     %tr
-      %td= pi_setting.display
-      %td= pi_setting.capture
-      %td= pi_setting.album
+      %td= pi_setting.display ? "Display On" : "Display Off"
+      -#%td= pi_setting.display
+      -#%td= pi_setting.capture
+      %td= pi_setting.capture ? "Capture On" : "Capture Off"
+      %td= "Album #{pi_setting.album}"
       %td= link_to 'Show', pi_setting
       %td= link_to 'Edit', edit_pi_setting_path(pi_setting)
       %td= link_to 'Destroy', pi_setting, :method => :delete, :data => { :confirm => 'Are you sure?' }
