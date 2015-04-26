@@ -1,25 +1,22 @@
 %h1 Albums
 
 %table
-  %tr
-    %th Name
-    %th Description
-    %th
-    %th
-    %th 
-
   - @albums.each do |album|
     %tr
-      %td= album.name
-      %td= album.description
-      %td
+      %h2= album.name
+      %h3= album.description
+      %p
         - album.photos.each do |photo|
-          = link_to image_tag(photo.photo_path, size: "45x30"), photo.photo_path
-      %td= link_to 'Show', album
-      %td= link_to 'Photos', album_photos_path(album)
-      %td= link_to 'New Photo', new_album_photo_path(album)
-      %td= link_to 'Edit', edit_album_path(album)
-      %td= link_to 'Destroy', album, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          = link_to image_tag(photo.photo_path, size: "270x180"), photo.photo_path
+      = link_to 'Show', album
+      \|
+      = link_to 'Photos', album_photos_path(album)
+      \|
+      = link_to 'New Photo', new_album_photo_path(album)
+      \|
+      = link_to 'Edit', edit_album_path(album)
+      \|
+      = link_to 'Destroy', album, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

@@ -51,8 +51,17 @@ class Photo < ActiveRecord::Base
 
       #write photo data to file
       logger.debug("photo filename: #{photo_filename}")
-      File.open(photo_filename, 'wb') do |f|
-        f.write(@file_data.read)
+      begin
+        file_content = Base64.decode64(@file_data)
+     #logger.debug(file_content)
+      rescue
+        File.open(photo_filename, 'wb') do |f|
+          f.write(@file_data.read)
+        end
+      else
+        File.open(photo_filename, 'wb') do |f|
+          f.write(file_content)
+        end
       end
       #file only saves when it newly arrives to model being saved
       @file_data = nil

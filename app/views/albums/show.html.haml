@@ -10,7 +10,7 @@
   %b Photos:
   - @album.photos.each do |photo|
     .lightbox_content
-      = image_tag(photo.photo_path, size: "45x30")
+      = image_tag(photo.photo_path, size: "540x360")
     = link_to #image_tag(photo.photo_path, size: "45x30"), 
     :"data-lightbox" => ".lightbox_content"
     -#= image_tag(photo.photo_path, size: "45x30") 
