@@ -52,14 +52,13 @@ class Photo < ActiveRecord::Base
       #write photo data to file
       logger.debug("photo filename: #{photo_filename}")
       begin
-        file_content = Base64.decode64(@file_data)
-     #logger.debug(file_content)
+        file_content = Base64.decode64(@file_data) #try to decode, will write bytes if not base64
       rescue
-        File.open(photo_filename, 'wb') do |f|
+        File.open(photo_filename, 'wb') do |f| 
           f.write(@file_data.read)
         end
       else
-        File.open(photo_filename, 'wb') do |f|
+        File.open(photo_filename, 'wb') do |f| #write base64 decoded if from Pi
           f.write(file_content)
         end
       end

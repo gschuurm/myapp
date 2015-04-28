@@ -1,14 +1,11 @@
 %p#notice= notice
-
+%h1 Pi Settings
 %p
-  %b Display:
-  = @pi_setting.display
+  %h3= @pi_setting.display ? "Display On" : "Display Off"
+  %h3= @pi_setting.capture ? "Capture On" : "Capture Off"
 %p
-  %b Capture:
-  = @pi_setting.capture
-%p
-  %b Album:
-  = @pi_setting.album
+  -#%h3 Album:
+  -#%h3= @pi_setting.album
 
 = link_to 'Edit', edit_pi_setting_path(@pi_setting)
 \|
