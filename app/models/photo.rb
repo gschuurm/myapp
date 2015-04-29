@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
 
-  #validates_presence_of :title #add other mandatory attrs here...
+  #validates_presence_of :photo_file #add other mandatory attrs here...
   after_save :store_photo
   belongs_to :album
 
