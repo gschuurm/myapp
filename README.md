@@ -1,5 +1,6 @@
-Myapp
+<h1>The Party Cam</h1>
+<h3>(Or, Photo Capture and Display Device With Accompanying Website)</h3>
 
-It all started with a party idea: a photobooth-esque activity including live photos being captured at a get-together and automatically displaying on a screen for everyone to see. Or, contrastly, a form of a security camera capturing photos to be reviewed. In either case, photos would be captured and uploaded to a website, where photos can be managed, displayed, and arranged into albums for friends and family to see. Simultaneously, the photos can be displaying on a screen in the room (think: digital photo frame).
+It all started with an idea for a party activity: a photobooth-esque system including live photos being captured at a get-together and automatically displaying on a screen for everyone to see. Or, contrastly, a form of a security camera capturing photos to be reviewed. In either case, photos would be captured and uploaded to a website, where photos can be managed, displayed, and arranged into albums for friends and family to see. Simultaneously, the photos can be displaying on a screen in the room (think: digital photo frame).
 
 This Ruby on Rails web app was created to support a Raspberry Pi camera module attached to a screen that displays said photos. The photos display in a loop from an application running on the Raspberry Pi (Python). The captured photos from the camera module, taken however often you want (set from the web app interface), are then sent (via HTTP) to the Ruby on Rails app, which then stores the photos. Photos can then be edited, arranged into albums, and removed from the app by the user from the website interface. Some explanatory diagrams and website screenshots are included in the folder "Demo Images".
